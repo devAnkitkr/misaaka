@@ -61,6 +61,7 @@ export default function Category(props) {
                     layout="responsive"
                     objectFit="cover"
                     className="w-full h-auto"
+                    priority={true}
                   />
                 </div>
                 <div className="text-center mt-2">

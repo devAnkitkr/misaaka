@@ -51,7 +51,7 @@ export default function Shop(props) {
                   layout="responsive"
                   objectFit="cover"
                   className="w-full h-auto"
-                  priority
+                  priority={true}
                 />
               </div>
               <div className="text-center mt-2">
