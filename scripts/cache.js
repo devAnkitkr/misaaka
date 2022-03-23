@@ -4,16 +4,15 @@ const fs = require('fs');
 async function getAllProductsList() {
   try {
     const products = await axios.get(`${process.env.BASE_URL}/api/seed`);
-    console.log(process.env.BASE_URL, products);
     return products;
   } catch (error) {
-    console.log(error);
+    console.log('my error', error);
   }
 }
 
 (async () => {
-  const { data } = await getAllProductsList();
-  const newData = JSON.stringify(data);
+  const fetchData = await getAllProductsList();
+  const newData = JSON.stringify(fetchData.data);
   const fileContents = `export const products = ${newData}`;
   try {
     fs.readdirSync('cache');

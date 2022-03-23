@@ -7,12 +7,12 @@ module.exports = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  // webpack: (config, { isServer }) => {
-  //   if (isServer) {
-  //     require('./scripts/cache.js');
-  //   }
-  //   return config;
-  // },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      require('./scripts/cache.js');
+    }
+    return config;
+  },
   env: {
     BASE_URL:
       process.env.NODE_ENV == 'development'
