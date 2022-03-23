@@ -62,7 +62,7 @@ export default function CheckoutForm({ orderId }) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `http://localhost:3000/order/${orderId}/paid`,
+        return_url: `${process.env.BASE_URL}/order/${orderId}/paid`,
       },
     });
 

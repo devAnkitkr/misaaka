@@ -3,13 +3,13 @@ export const data = {
     {
       name: 'Dining set',
       slug: 'dining-set',
-      image: '/banners/banner1.JPG',
+      image: '/banners/banner1.jpg',
       description: '',
     },
     {
       name: 'Kettle set',
       slug: 'kettle-set',
-      image: '/banners/banner2.JPG',
+      image: '/banners/banner2.jpg',
       description: '',
     },
     {
@@ -82,10 +82,10 @@ export const data = {
       slug: 'aqua-plate-&-bowl-set',
       category: 'Dining set',
       images: [
-        '/products/plateandbowl/image1.jpg',
-        '/products/plateandbowl/image2.jpg',
-        '/products/plateandbowl/image3.jpg',
-        '/products/plateandbowl/image4.jpg',
+        '/products/plateandbowl/image1.JPG',
+        '/products/plateandbowl/image2.JPG',
+        '/products/plateandbowl/image3.JPG',
+        '/products/plateandbowl/image4.JPG',
       ],
       price: 1399,
       countInStock: 5,

@@ -27,9 +27,9 @@ export default function ShopByCategory(props) {
           >
             <Image
               src={category.image}
-              alt={category.name}
-              width={100}
-              height={100}
+              alt="category banner"
+              width="100"
+              height="100"
               layout="responsive"
               objectFit="cover"
             />

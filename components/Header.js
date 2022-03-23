@@ -113,7 +113,7 @@ export default function Header() {
 
         {/* ====================NAVBAR FOR PC=================== */}
         <div className="hidden md:block pt-2">
-          <ul className="flex justify-between items-end text-heading font-semibold uppercase">
+          <ul className="flex justify-between items-end text-heading uppercase">
             <Link href="/">
               <li className="font-neutral mx-2 cursor-pointer hover:text-active">
                 Home

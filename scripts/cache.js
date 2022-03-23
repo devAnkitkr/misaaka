@@ -10,8 +10,8 @@ async function getAllProductsList() {
   }
 }
 
-(async () => {
-  const fetchData = await getAllProductsList();
+(() => {
+  const fetchData = getAllProductsList();
   const newData = JSON.stringify(fetchData.data);
   const fileContents = `export const products = ${newData}`;
   try {
