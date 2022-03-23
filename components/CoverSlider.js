@@ -11,7 +11,7 @@ const CoverSlider = () => {
       <div className="embla_container flex">
         <div className="embla__slide relative" style={{ flex: '0 0 100%' }}>
           <Image
-            src="/banners/banner1.JPG"
+            src="/static/banner1.jpg"
             width="900"
             height="500"
             layout="responsive"
@@ -21,7 +21,7 @@ const CoverSlider = () => {
         </div>
         <div className="embla__slide relative" style={{ flex: '0 0 100%' }}>
           <Image
-            src="/banners/banner2.jpg"
+            src="/static/banner2.jpg"
             width="900"
             height="500"
             layout="responsive"
@@ -31,7 +31,7 @@ const CoverSlider = () => {
 
         <div className="embla__slide relative" style={{ flex: '0 0 100%' }}>
           <Image
-            src="/banners/banner3.jpg"
+            src="/static/banner3.jpg"
             width="900"
             height="500"
             layout="responsive"
