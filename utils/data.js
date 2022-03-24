@@ -180,7 +180,7 @@ export const data = {
       countInStock: 2,
       isFeatured: false,
       description:
-        'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: White🤍 The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 6-Pieces Cups☕',
+        'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: Blue The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 6-Pieces Cups☕',
     },
     {
       name: 'Set of 5 Floral Kulhad',
@@ -213,8 +213,8 @@ export const data = {
         'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: White🤍 The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 2-Pieces Cups☕',
     },
     {
-      name: 'Set of 2 stripe mugs',
-      slug: 'set-of-2-stripe-mugs',
+      name: 'Set of 2 orange mugs',
+      slug: 'set-of-2-orange-mugs',
       category: 'Mugs',
       images: [
         '/static/products/orangemug/image1.png',
@@ -225,7 +225,7 @@ export const data = {
       countInStock: 2,
       isFeatured: false,
       description:
-        'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: White🤍 Design: Orange stripes.  The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 2-Pieces Mugs☕',
+        'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: White and orange  Design: Orange stripes.  The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 2-Pieces Mugs☕',
     },
   ],
 };
