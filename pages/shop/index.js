@@ -66,7 +66,7 @@ export default function Shop(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await db.connect();
   const fetchProducts = await Product.find({}).lean();
   const fetchCategories = await Categories.find({}).lean();
@@ -75,6 +75,7 @@ export async function getServerSideProps() {
     props: {
       products: fetchProducts.map(db.convertDocToObj),
       categories: fetchCategories.map(db.convertDocToObj),
-    }, // will be passed to the page component as props
+    },
+    revalidate: 10,
   };
 }

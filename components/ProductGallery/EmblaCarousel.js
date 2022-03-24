@@ -44,8 +44,8 @@ const EmblaCarousel = ({ images, slides }) => {
               <div className="pl-4 min-w-full relative" key={index}>
                 <div className="relative overflow-hidden min-w-full h-[490px] md:h-[590px] lg:h-[690px]">
                   <Image
-                    width="100"
-                    height="100"
+                    // width="100"
+                    // height="100"
                     layout="fill"
                     objectFit="cover"
                     className="absolute block top-0 object-cover w-full max-w-auto -translate-x-[0%] -translate-y-[0%]"

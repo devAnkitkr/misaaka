@@ -30,7 +30,7 @@ export default function ProductPage(props) {
       </span>
       <div className="flex flex-col md:flex-row">
         <ProductGallery images={product.images} />
-        <div className="w-9/12 mt-6 md:ml-6">
+        <div className="md:w-9/12 mt-6 md:ml-6">
           <h1 className="font-semibold text-2xl mb-1 text-heading">
             {product.name}
           </h1>
@@ -53,7 +53,20 @@ export default function ProductPage(props) {
   );
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
+  await db.connect();
+  const fetchProducts = await Product.find({}).lean();
+  await db.disconnect();
+  const fetchSlug = fetchProducts.map((fetchProduct) => ({
+    params: { slug: fetchProduct.slug },
+  }));
+  return {
+    paths: [...fetchSlug],
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
   await db.connect();
   const fetchProduct = await Product.findOne({ slug: params.slug }).lean();
   const fetchCategory = await Categories.findOne({

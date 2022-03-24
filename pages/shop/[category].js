@@ -75,8 +75,24 @@ export default function Category(props) {
     </div>
   );
 }
+export async function getStaticPaths() {
+  try {
+    await db.connect();
+    const fetchCategories = await Categories.find({}).lean();
+    const slug = fetchCategories.map((fetchCategory) => ({
+      params: { category: fetchCategory.slug },
+    }));
+    await db.disconnect();
+    return {
+      paths: [...slug],
+      fallback: false,
+    };
+  } catch (error) {
+    console.log('getstaticpaths error', error);
+  }
+}
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
   try {
     await db.connect();
     const fetchCategories = await Categories.find({}).lean();
@@ -94,7 +110,8 @@ export async function getServerSideProps({ params }) {
         products: fetchProducts.map(db.convertDocToObj),
         categories: fetchCategories.map(db.convertDocToObj),
         params,
-      }, // will be passed to the page component as props
+      },
+      revalidate: 10,
     };
   } catch (error) {
     return {
