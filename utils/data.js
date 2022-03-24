@@ -1,4 +1,4 @@
-export const data = {
+const data = {
   categories: [
     {
       name: 'Dining set',
@@ -25,11 +25,12 @@ export const data = {
       description: '',
     },
   ],
-  categoryBanner: [
-    '/banners/banner1.JPG',
-    '/banners/banner2.JPG',
-    '/banners/banner3.jpg',
-  ],
+
+  // categoryBanner: [
+  //   '/banners/banner1.JPG',
+  //   '/banners/banner2.JPG',
+  //   '/banners/banner3.jpg',
+  // ],
   products: [
     {
       name: 'Star Mug',
@@ -229,3 +230,4 @@ export const data = {
     },
   ],
 };
+module.exports = data;
