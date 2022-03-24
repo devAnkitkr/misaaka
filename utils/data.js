@@ -146,11 +146,86 @@ export const data = {
         '/static/products/bluekettle/image1.JPG',
         '/static/products/bluekettle/image2.JPG',
       ],
-      price: 499,
+      price: 489,
       countInStock: 2,
       isFeatured: true,
       description:
         'This is a large tea pot or Coffee Pot with a lovely shaped perfect for sunny afternoon teas in the garden. If you are looking for an everyday teapot that holds a few mugs worth of hot brew, this is your pick.☕This classic style teapot features contemporary qualities such as being dishwasher and oven safe withstands high temperatures, serves for a long time without losing its functional qualities and appearance. 💙Slight and minor color change could be noticed as each product is individually made by hand. Flash used in the shoot and difference in screen✨ resolutions could also be a reason.',
+    },
+    {
+      name: 'Set of 6 Elegant Kulhad',
+      slug: 'set-of-6-elegant-kulhad',
+      category: 'Cups',
+      images: [
+        '/static/products/whitekulhad/image1.png',
+        '/static/products/whitekulhad/image2.png',
+        '/static/products/whitekulhad/image3.png',
+      ],
+      price: 679,
+      countInStock: 2,
+      isFeatured: false,
+      description:
+        "Set of 6 Elegant Kulhad in a beautiful pattern .These elegant tea cups with easy grip handles are the perfect way to enjoy your brew. This set also make a beautiful and thoughtful gift.🎁 For those in love with that finery of the old world, these Stoneware kullad mugs are the right choice for their favourite tea. Enjoy your hot milk / coffee / tea / soup in this finely glazed,brilliant handmade kullad mugs.✨✨ It's Handmade and material- Stoneware Set contents- 6 ceramic kulhad❤️ Height - 3 inch , Diameter - 3Microwave and dishwasher safe ✔️",
+    },
+    {
+      name: 'Set of 6 blue cups',
+      slug: 'set-of-6-blue-cups',
+      category: 'Cups',
+      images: [
+        '/static/products/bluecups/image1.png',
+        '/static/products/bluecups/image2.png',
+        '/static/products/bluecups/image3.png',
+      ],
+      price: 829,
+      countInStock: 2,
+      isFeatured: false,
+      description:
+        'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: White🤍 The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 6-Pieces Cups☕',
+    },
+    {
+      name: 'Set of 5 Floral Kulhad',
+      slug: 'set-of-5-floral-kulhad',
+      category: 'Cups',
+      images: [
+        '/static/products/bluekulhad/image1.png',
+        '/static/products/bluekulhad/image2.png',
+        '/static/products/bluekulhad/image3.png',
+      ],
+      price: 850,
+      countInStock: 2,
+      isFeatured: false,
+      description:
+        'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: White🤍 The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 5-Pieces Cups☕',
+    },
+    {
+      name: 'Set of 2 stripe cups',
+      slug: 'set-of-2-stripe-cups',
+      category: 'Cups',
+      images: [
+        '/static/products/bngcup/image1.png',
+        '/static/products/bngcup/image2.png',
+        '/static/products/bngcup/image3.png',
+      ],
+      price: 950,
+      countInStock: 2,
+      isFeatured: false,
+      description:
+        'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: White🤍 The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 2-Pieces Cups☕',
+    },
+    {
+      name: 'Set of 2 stripe mugs',
+      slug: 'set-of-2-stripe-mugs',
+      category: 'Mugs',
+      images: [
+        '/static/products/orangemug/image1.png',
+        '/static/products/orangemug/image2.png',
+        '/static/products/orangemug/image3.png',
+      ],
+      price: 360,
+      countInStock: 2,
+      isFeatured: false,
+      description:
+        'Made from fine porcelain. Durable, dishwasher safe and microwave safe !! Colour: White🤍 Design: Orange stripes.  The stylish design of the cups or mugs look visually appealing and is an excellent way to welcome your guests with.✨ Package Contents: 2-Pieces Mugs☕',
     },
   ],
 };
