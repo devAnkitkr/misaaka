@@ -8,7 +8,7 @@ export default function About() {
       <div className="w-full flex flex-col md:flex-row">
         <div className="w-full flex flex-col md:w-4/12 my-4">
           <Image
-            src="/static/about/akansha.jpg"
+            src="/static/about/misaakaOwner.png"
             alt="misaaka owner image"
             width="400"
             height="400"

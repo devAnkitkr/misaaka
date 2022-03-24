@@ -34,7 +34,7 @@ export default function Home(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await db.connect();
   const fetchProducts = await Product.find({ isFeatured: true })
     .limit(6)
@@ -47,5 +47,6 @@ export async function getServerSideProps() {
       products: fetchProducts.map(db.convertDocToObj),
       categories: fetchCategories.map(db.convertDocToObj),
     },
+    revalidate: 10,
   };
 }
