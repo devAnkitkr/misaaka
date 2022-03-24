@@ -83,9 +83,38 @@ export default function CheckoutForm({ orderId }) {
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}
+      <button
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+        className="w-full bg-rose-400 rounded w-full text-white block py-3 flex justify-center hover:bg-rose-500"
+      >
+        <span id="button-text w-full">
+          {isLoading ? (
+            <button
+              type="button"
+              class="bg-rose-400 rounded w-full text-white block flex justify-center"
+              disabled
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                className="animate-spin fill-white mr-3"
+              >
+                <circle cx="12" cy="20" r="2"></circle>
+                <circle cx="12" cy="4" r="2"></circle>
+                <circle cx="6.343" cy="17.657" r="2"></circle>
+                <circle cx="17.657" cy="6.343" r="2"></circle>
+                <circle cx="4" cy="12" r="2.001"></circle>
+                <circle cx="20" cy="12" r="2"></circle>
+                <circle cx="6.343" cy="6.344" r="2"></circle>
+                <circle cx="17.657" cy="17.658" r="2"></circle>
+              </svg>
+              Processing...
+            </button>
+          ) : (
+            'Pay now'
+          )}
         </span>
       </button>
       {/* Show any error or success messages */}

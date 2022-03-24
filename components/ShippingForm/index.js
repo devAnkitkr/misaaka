@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { ShopContext } from '../../utils/shopContext';
+import SnackBar from '../SnackBar';
 import CustomInput from './customInput';
 
 export default function ShippingForm() {
@@ -15,6 +16,7 @@ export default function ShippingForm() {
   });
 
   const { dispatch } = useContext(ShopContext);
+  const snackBarRef = useRef(null);
 
   const handleInputChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,9 +25,11 @@ export default function ShippingForm() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: 'SAVE_SHIPPING_ADDRESS', payload: form });
+    snackBarRef.current.show();
   };
   return (
     <div>
+      <SnackBar ref={snackBarRef} message="Address saved!" type="SUCCESS" />
       <form onSubmit={handleFormSubmit}>
         <h2 className="text-heading text-sm">Contact Details</h2>
         <div className="w-full">

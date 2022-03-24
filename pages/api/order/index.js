@@ -8,6 +8,7 @@ handler.post(async (req, res) => {
   await db.connect();
   const newOrder = new Order({ ...req.body });
   const order = await newOrder.save();
+  await db.disconnect();
   res.status(201).send(order);
 });
 
