@@ -17,6 +17,7 @@ export default function Checkout() {
     totalMRP: 0,
     convenienceFee: 0,
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   var today = new Date();
   var dd = String(today.getDate() + 5).padStart(2, '0');
@@ -58,6 +59,7 @@ export default function Checkout() {
       snackBarRef.current.show();
       return;
     }
+    setIsLoading(true);
     const orderItems = cart.map((product) => ({
       product_id: product._id,
       quantity: product.quantity,
@@ -72,6 +74,7 @@ export default function Checkout() {
         deliveryStatus: 'Processing',
       },
     });
+    setIsLoading(false);
     router.push(`/order/${response.data._id}`);
   };
 
@@ -161,10 +164,33 @@ export default function Checkout() {
             </div>
 
             <button
-              className="w-full rounded bg-rose-400 px-10 py-2 my-4 text-white font-bold hover:bg-rose-500 transition-[bg-color] ease-in duration-150"
+              className="w-full rounded bg-rose-400 flex  justify-center px-10 py-2 my-4 text-white font-bold hover:bg-rose-500 disabled:bg-rose-400 transition-[bg-color] ease-in duration-150"
               onClick={confirmOrder}
+              disabled={isLoading}
             >
-              CONFIRM
+              {isLoading ? (
+                <span className="flex">
+                  {' '}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    className="animate-spin fill-white mr-3"
+                  >
+                    <circle cx="12" cy="20" r="2"></circle>
+                    <circle cx="12" cy="4" r="2"></circle>
+                    <circle cx="6.343" cy="17.657" r="2"></circle>
+                    <circle cx="17.657" cy="6.343" r="2"></circle>
+                    <circle cx="4" cy="12" r="2.001"></circle>
+                    <circle cx="20" cy="12" r="2"></circle>
+                    <circle cx="6.343" cy="6.344" r="2"></circle>
+                    <circle cx="17.657" cy="17.658" r="2"></circle>
+                  </svg>{' '}
+                  Loading...
+                </span>
+              ) : (
+                'CONFIRM'
+              )}
             </button>
           </div>
         </div>

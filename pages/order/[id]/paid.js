@@ -10,10 +10,11 @@ export default function Paid() {
   const router = useRouter();
   const { dispatch } = useContext(ShopContext);
   const snackBarRef = useRef(null);
+  const snackBarRefSuccess = useRef(null);
   const [orderInfo, setOrderInfo] = useState({
     orderId: '',
     orderItems: [],
-    shippingAddress: {},
+    shippingAddress: null,
     status: {},
     createdAt: '',
   });
@@ -21,7 +22,7 @@ export default function Paid() {
     totalMRP: 0,
     convenienceFee: 0,
   });
-  const [paymentStatus, setPaymentStatus] = useState('To be paid');
+  const [paymentStatus, setPaymentStatus] = useState('Loading...');
 
   const { orderItems, shippingAddress, createdAt } = orderInfo;
 
@@ -70,8 +71,10 @@ export default function Paid() {
           if (response.data.paidOrder.status.isPaid == true) {
             dispatch({ type: 'CART_CLEAR_ITEM' });
             setPaymentStatus('Paid');
+            snackBarRefSuccess.current.show();
             return;
           } else {
+            setPaymentStatus('Not Paid');
             snackBarRef.current.show();
           }
         }
@@ -87,6 +90,11 @@ export default function Paid() {
         message="Something went wrong.Try again later"
         type="ERROR"
       />
+      <SnackBar
+        ref={snackBarRefSuccess}
+        message="Hurray! Order is Placed"
+        type="SUCCESS"
+      />
       <div className="w-full flex flex-col md:flex-row">
         {/* =============================Shipping Info=============================== */}
         <div className="w-full border rounded p-4">
@@ -98,7 +106,7 @@ export default function Paid() {
           </h1>
 
           {/* =============================Saved Address=============================== */}
-          {shippingAddress != null && (
+          {shippingAddress != null ? (
             <div className="flex flex-col my-5 rounded p-4 w-full bg-gray-100">
               <h2 className="text-heading text-sm mb-4 ">Saved Address</h2>
               <div className="flex flex-col text-caption  text-sm">
@@ -112,6 +120,13 @@ export default function Paid() {
                   {shippingAddress.city},{shippingAddress.state},{' '}
                   {shippingAddress.country}
                 </div>
+              </div>
+            </div>
+          ) : (
+            <div className="animate-pulse flex flex-col my-5 rounded p-4 w-full bg-gray-100">
+              <h2 className="text-heading text-sm mb-4 ">Saved Address</h2>
+              <div className="flex flex-col text-caption text-sm">
+                Loading...
               </div>
             </div>
           )}
@@ -128,8 +143,7 @@ export default function Paid() {
           <h1 className="border-b pb-2 mb-4 text-heading">
             Delivery Estimates
           </h1>
-          {orderItems &&
-            orderItems != null &&
+          {orderItems && orderItems.length != 0 ? (
             orderItems.map((item, index) => (
               <div
                 className="w-full flex items-center  mb-4 bg-gray-100"
@@ -154,7 +168,12 @@ export default function Paid() {
                   </span>
                 </div>
               </div>
-            ))}
+            ))
+          ) : (
+            <div className="w-full flex items-center p-2 mb-4 bg-gray-100 text-caption">
+              Loading...
+            </div>
+          )}
 
           {/* =============================Price details=============================== */}
           <div className="mb-4 text-heading">

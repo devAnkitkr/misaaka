@@ -32,6 +32,7 @@ export default function OrderId() {
       router.push('/');
       return;
     }
+
     async function fetchData() {
       if (router.query.id) {
         const response = await axios.get(`/api/order/${router.query.id}/get`);
@@ -42,7 +43,6 @@ export default function OrderId() {
         setOrderId(response.data.orderId);
         setOrderStatus(response.data.status.isPaid);
         setOrderCreatedAt(response.data.createdAt);
-        console.log('1st useEffect:', response.data);
       }
     }
     fetchData();
@@ -56,7 +56,6 @@ export default function OrderId() {
           { orderItems },
           { header: { 'Content-Type': 'application/json' } }
         );
-        console.log('2nd useEffect:', data.order);
 
         // await axios.post();
         setClientSecret(data.clientSecret);
@@ -94,7 +93,7 @@ export default function OrderId() {
           </h1>
 
           {/* =============================Saved Address=============================== */}
-          {shippingAddress != null && (
+          {shippingAddress != null ? (
             <div className="flex flex-col my-5 rounded p-4 w-full bg-gray-100">
               <h2 className="text-heading text-sm mb-4 ">Saved Address</h2>
               <div className="flex flex-col text-caption  text-sm">
@@ -108,6 +107,13 @@ export default function OrderId() {
                   {shippingAddress.city},{shippingAddress.state},{' '}
                   {shippingAddress.country}
                 </div>
+              </div>
+            </div>
+          ) : (
+            <div className="animate-pulse flex flex-col my-5 rounded p-4 w-full bg-gray-100">
+              <h2 className="text-heading text-sm mb-4 ">Saved Address</h2>
+              <div className="flex flex-col text-caption text-sm">
+                Loading...
               </div>
             </div>
           )}
@@ -124,8 +130,7 @@ export default function OrderId() {
           <h1 className="border-b pb-2 mb-4 text-heading">
             Delivery Estimates
           </h1>
-          {orderItems &&
-            orderItems != null &&
+          {orderItems && orderItems != null ? (
             orderItems.map((item, index) => (
               <div
                 className="w-full flex items-center  mb-4 bg-gray-100"
@@ -147,12 +152,17 @@ export default function OrderId() {
                   <span className="text-sm">Estimate delivery by</span>
                   <span className="text-heading text-sm">
                     {orderCreatedAt != null
-                      ? moment(orderCreatedAt).format('ll')
+                      ? moment(orderCreatedAt).add(5, 'days').format('ll')
                       : 'Loading...'}
                   </span>
                 </div>
               </div>
-            ))}
+            ))
+          ) : (
+            <div className="w-full flex items-center p-2 mb-4 bg-gray-100 text-caption">
+              Loading...
+            </div>
+          )}
 
           {/* =============================Price details=============================== */}
           <div className="mb-4 text-heading">
@@ -172,10 +182,32 @@ export default function OrderId() {
               <div>Total Amount</div>
               <div>₹ {priceDetail.totalMRP + priceDetail.convenienceFee}</div>
             </div>
-            {orderStatus == false && clientSecret && (
+            {orderStatus == false && clientSecret ? (
               <Elements options={options} stripe={stripePromise}>
                 <CheckoutForm orderId={orderId} />
               </Elements>
+            ) : (
+              <div className="animate-pulse w-full bg-gray-100 p-4 text-center text-sm text-caption">
+                <span className="flex justify-center">
+                  {' '}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    className="animate-spin fill-gray-500 mr-3"
+                  >
+                    <circle cx="12" cy="20" r="2"></circle>
+                    <circle cx="12" cy="4" r="2"></circle>
+                    <circle cx="6.343" cy="17.657" r="2"></circle>
+                    <circle cx="17.657" cy="6.343" r="2"></circle>
+                    <circle cx="4" cy="12" r="2.001"></circle>
+                    <circle cx="20" cy="12" r="2"></circle>
+                    <circle cx="6.343" cy="6.344" r="2"></circle>
+                    <circle cx="17.657" cy="17.658" r="2"></circle>
+                  </svg>{' '}
+                  Loading...
+                </span>
+              </div>
             )}
           </div>
         </div>
