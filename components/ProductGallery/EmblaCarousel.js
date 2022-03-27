@@ -42,13 +42,10 @@ const EmblaCarousel = ({ images, slides }) => {
           <div className="flex -ml-4 border">
             {slides.map((index) => (
               <div className="pl-4 min-w-full relative" key={index}>
-                <div className="relative overflow-hidden min-w-full h-[490px] md:h-[590px] lg:h-[690px]">
+                <div className="relative overflow-hidden min-w-full min-h-[350px] md:h-[490px] md:h-[590px] lg:h-[690px]">
                   <Image
-                    // width="100"
-                    // height="100"
                     layout="fill"
-                    objectFit="cover"
-                    className="absolute block top-0 object-cover w-full max-w-auto -translate-x-[0%] -translate-y-[0%]"
+                    className="absolute bg-rose-50 block top-0 object-scale-down w-full max-w-auto h-auto -translate-x-[0%] -translate-y-[0%]"
                     src={mediaByIndex(index)}
                     alt="A cool cat."
                   />

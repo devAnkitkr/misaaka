@@ -4,7 +4,6 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
-import axios from 'axios';
 
 export default function CheckoutForm({ orderId }) {
   const stripe = useStripe();

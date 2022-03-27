@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export const Thumb = ({ selected, onClick, imgSrc }) => (
   <div
-    className={`relative overflow-hidden cursor-pointer h-auto w-[100%] bg-transparent block ${
+    className={`relative overflow-hidden cursor-pointer -ml-1 md:ml-0 h-auto w-[100%] bg-transparent block ${
       selected ? 'opacity-100' : ' opacity-80'
     }`}
   >

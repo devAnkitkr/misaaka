@@ -21,16 +21,14 @@ export default function ShopByCategory(props) {
       <div className="flex flex-col items-center md:flex-row md:justify-between mx-4 md:mx-0">
         {categories.map((category, index) => (
           <div
-            className="w-full h-full my-4 mx-4 relative overflow-hidden rounded-lg group"
+            className="w-full h-[200px] md:h-[350px] my-4 mx-4 relative overflow-hidden rounded-lg group"
             onClick={() => router.push(`/shop/${category.slug}`)}
             key={index}
           >
             <Image
               src={category.image}
-              alt="category banner"
-              width="100"
-              height="100"
-              layout="responsive"
+              alt={category.name}
+              layout="fill"
               objectFit="cover"
             />
             <div className="transition-all group-hover:items-center  text-dark  capitalize  ease-in duration-300 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-neutral-900/50 to-neutral-900/10 hover:bg-neutral-900/50 p-4 flex text-3xl justify-center items-end text-white cursor-pointer">

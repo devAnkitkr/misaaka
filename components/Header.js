@@ -22,19 +22,19 @@ export default function Header() {
             onClick={() => setisClicked(!isClicked)}
           >
             <div
-              className={`w-5 h-[2px] bg-black m-1 ease-in duration-75 ${
+              className={`w-5 h-[2px] bg-black my-1 ease-in duration-75 ${
                 isClicked === true
                   ? 'rotate-45 bottom-0 translate-y-1'
                   : 'rotate-0'
               }`}
             ></div>
             <div
-              className={`w-5 h-[2px]  bg-black m-1 ease-in duration-75 ${
+              className={`w-5 h-[2px]  bg-black my-1 ease-in duration-75 ${
                 isClicked === true ? 'hidden' : 'block'
               }`}
             ></div>
             <div
-              className={`w-5 h-[2px]  bg-black m-1 ${
+              className={`w-5 h-[2px]  bg-black my-1 ${
                 isClicked === true
                   ? '-rotate-45 -translate-y-1 ease-in duration-75'
                   : 'rotate-0'
