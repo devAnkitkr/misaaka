@@ -3,7 +3,7 @@ import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import { init } from '@emailjs/browser';
 import { SvgIcons } from '../utils/svgIcons';
-init('user_Seh9J6JIf4oYoVkwaaUqk');
+init(process.env.EMAIL_JS_USER_ID);
 
 export default function Contact() {
   const [state, setState] = useState({
@@ -34,8 +34,6 @@ export default function Contact() {
 
     if (validate({ ...state }) === true) {
       const { email, name, message } = state;
-
-      const websiteUrl = 'https://www.misaaka.in';
 
       var templateParams = {
         subject: 'www.misaaka.in',
@@ -83,6 +81,7 @@ export default function Contact() {
               src="/static/about/contactus.jpg"
               layout="fill"
               className="w-max object-cover md:object-contain lg:object-cover"
+              priority
             />
           </div>
           <div className="w-[100%] md:w-[100%] lg:w-[100%] flex flex-col lg:flex-row lg:items-center justify-center items-start p-4 lg:p-10 bg-rose-50 ml-0 -mt-[200px] lg:mt-0  lg:-ml-10 z-10 lg:rounded-lg lg:drop-shadow-xl">
