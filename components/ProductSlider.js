@@ -38,9 +38,7 @@ export default function ProductSlider(props) {
                 className="rounded-lg"
               />
               <div className="flex flex-col items-center text-center mt-1 ">
-                <h2 className="font-semibold md:text-lg text-heading">
-                  {product.name}
-                </h2>
+                <h2 className="md:text-lg text-heading">{product.name}</h2>
                 <p className="text-caption">₹{product.price}</p>
               </div>
             </div>

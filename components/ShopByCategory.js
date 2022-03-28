@@ -31,8 +31,10 @@ export default function ShopByCategory(props) {
               layout="fill"
               objectFit="cover"
             />
-            <div className="transition-all group-hover:items-center  text-dark  capitalize  ease-in duration-300 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-neutral-900/50 to-neutral-900/10 hover:bg-neutral-900/50 p-4 flex text-3xl justify-center items-end text-white cursor-pointer">
-              {category.name}
+            <div className="transition-all  text-dark  capitalize  ease-in duration-300 absolute top-0 left-0 w-full h-full bg-gradient-to-t from-neutral-900/50 to-neutral-900/10 hover:bg-neutral-900/50 p-4 flex text-2xl font-light justify-center text-white cursor-pointer">
+              <p className="absolute group-hover:bottom-[40%] md:group-hover:bottom-[45%] bottom-[15%] transition-all ease-in duration-150">
+                {category.name}
+              </p>
             </div>
           </div>
         ))}

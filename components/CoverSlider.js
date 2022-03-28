@@ -45,7 +45,7 @@ const CoverSlider = () => {
           Crockery | Stoneware | Ceramics | Decor
         </span>
         <button
-          className="rounded bg-rose-400 px-5 md:px-10 py-2 my-2 mt-4 text-white font-normal text-base md:text-lg font-bold hover:bg-rose-500 transition-[bg-color] ease-in duration-150"
+          className="rounded bg-rose-400 px-4 md:px-6 py-1 my-2 mt-4 text-white font-normal text-base md:text-lg font-bold hover:bg-rose-500 transition-[bg-color] ease-in duration-150"
           onClick={() => router.push('/shop')}
         >
           SHOP NOW!

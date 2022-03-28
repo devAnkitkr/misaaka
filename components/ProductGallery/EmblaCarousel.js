@@ -45,7 +45,7 @@ const EmblaCarousel = ({ images, slides }) => {
                 <div className="relative overflow-hidden min-w-full min-h-[350px] md:h-[490px] md:h-[590px] lg:h-[690px]">
                   <Image
                     layout="fill"
-                    className="absolute bg-rose-50 block top-0 object-scale-down w-full max-w-auto h-auto -translate-x-[0%] -translate-y-[0%]"
+                    className="absolute bg-rose-50 block top-0 object-contain w-full max-w-auto h-auto -translate-x-[0%] -translate-y-[0%]"
                     src={mediaByIndex(index)}
                     alt="A cool cat."
                   />

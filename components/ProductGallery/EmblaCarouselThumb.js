@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 export const Thumb = ({ selected, onClick, imgSrc }) => (
   <div
-    className={`relative overflow-hidden cursor-pointer -ml-1 md:ml-0 h-auto w-[100%] bg-transparent block ${
-      selected ? 'opacity-100' : ' opacity-80'
+    className={`relative overflow-hidden cursor-pointer -ml-1 md:ml-0 h-auto w-[100%] bg-transparent block  ${
+      selected ? 'opacity-100 p-1' : ' opacity-50'
     }`}
   >
     <button onClick={onClick} className="w-[100%] h-[100%] p-2" type="button">
