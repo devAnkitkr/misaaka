@@ -19,4 +19,7 @@ module.exports = {
         ? 'http://localhost:3000'
         : process.env.BASE_URL,
   },
+  EMAIL_JS_USER_ID: process.env.EMAIL_JS_USER_ID,
+  EMAIL_JS_SERVICE_ID: process.env.EMAIL_JS_SERVICE_ID,
+  EMAIL_JS_TEMPLATE_ID: process.env.EMAIL_JS_TEMPLATE_ID,
 };
