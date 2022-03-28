@@ -53,7 +53,7 @@ export default function Header() {
 
         {/* ====================NAVBAR FOR MOBILE=================== */}
         <nav
-          className={`absolute transition-[left] text-heading text-center p-6 top-0  z-50 ease-in duration-300 min-h-screen w-full bg-rose-50 ${
+          className={`fixed transition-[left] text-heading text-center p-6 top-0  z-50 ease-in duration-300 min-h-screen w-full bg-rose-50  ${
             isClicked ? ' left-0' : '-left-full'
           }`}
         >
@@ -81,12 +81,12 @@ export default function Header() {
           </h2>
           <ul className="flex flex-col w-full justify-center items-center tracking-wide">
             {/* ====================SEARCH BAR FOR MOBILE=================== */}
-            <li className="font-semibold my-10 cursor-pointer border rounded">
+            <li className="font-semibold my-5 cursor-pointer border rounded">
               <SearchBar />
             </li>
             <Link href="/">
               <li
-                className="font-semibold  cursor-pointer"
+                className="font-semibold py-5  cursor-pointer"
                 onClick={() => setisClicked(false)}
               >
                 Home
@@ -94,7 +94,7 @@ export default function Header() {
             </Link>
             <Link href="/shop">
               <li
-                className="font-semibold py-10 cursor-pointer"
+                className="font-semibold py-5 cursor-pointer"
                 onClick={() => setisClicked(false)}
               >
                 Shop
@@ -102,10 +102,18 @@ export default function Header() {
             </Link>
             <Link href="/about">
               <li
-                className="font-semibold  cursor-pointer"
+                className="font-semibold py-5  cursor-pointer"
                 onClick={() => setisClicked(false)}
               >
                 About
+              </li>
+            </Link>
+            <Link href="/contact">
+              <li
+                className="font-semibold  py-5 cursor-pointer"
+                onClick={() => setisClicked(false)}
+              >
+                Contact
               </li>
             </Link>
           </ul>
@@ -127,6 +135,11 @@ export default function Header() {
             <Link href="/about">
               <li className="font-neutral mx-2 cursor-pointer hover:text-active">
                 About
+              </li>
+            </Link>
+            <Link href="/contact">
+              <li className="font-neutral mx-2 cursor-pointer hover:text-active">
+                Contact
               </li>
             </Link>
           </ul>

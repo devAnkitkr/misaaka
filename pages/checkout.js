@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import ShippingForm from '../components/ShippingForm';
 import SnackBar from '../components/SnackBar';
-
+import moment from 'moment';
 import { ShopContext } from '../utils/shopContext';
 
 export default function Checkout() {
@@ -21,26 +21,6 @@ export default function Checkout() {
 
   var today = new Date();
   var dd = String(today.getDate() + 5).padStart(2, '0');
-
-  var monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  var mm = monthNames[String(today.getMonth() + 1)];
-  var yyyy = today.getFullYear();
-
-  today = dd + '/' + mm + '/' + yyyy;
-  today = dd + ' ' + mm + ', ' + yyyy;
 
   useEffect(() => {
     if (cart.length == 0) {
@@ -139,7 +119,9 @@ export default function Checkout() {
                 </div>
                 <div className="flex flex-col ml-4 text-caption">
                   Estimate delivery by{' '}
-                  <span className="text-heading">{today}</span>
+                  <span className="text-heading">
+                    {moment().add(5, 'days').format('ll')}
+                  </span>
                 </div>
               </div>
             ))}

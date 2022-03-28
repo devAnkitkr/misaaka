@@ -164,7 +164,7 @@ export default function Paid() {
                   <div className="font-semibold">{item.product.name}</div>
                   <span className="text-sm">Estimate delivery by</span>
                   <span className="text-heading text-sm">
-                    {moment(createdAt).format('ll')}
+                    {moment(createdAt).add(5, 'days').format('ll')}
                   </span>
                 </div>
               </div>

@@ -19,6 +19,14 @@ a {
 * {
   box-sizing: border-box;
 }
+
+input {
+  outline: none;
+}
+textarea {
+  outline: none;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

@@ -7,7 +7,6 @@ const SearchBar = () => {
 
   const onChange = useCallback((event) => {
     const query = event.target.value;
-    console.log(query);
     if (query.length) {
       setResults(
         products.filter(
