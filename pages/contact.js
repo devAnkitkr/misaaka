@@ -3,6 +3,7 @@ import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import { init } from '@emailjs/browser';
 import { SvgIcons } from '../utils/svgIcons';
+init('user_Seh9J6JIf4oYoVkwaaUqk');
 
 export default function Contact() {
   const [state, setState] = useState({
