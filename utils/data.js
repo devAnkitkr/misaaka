@@ -26,11 +26,6 @@ const data = {
     },
   ],
 
-  // categoryBanner: [
-  //   '/banners/banner1.JPG',
-  //   '/banners/banner2.JPG',
-  //   '/banners/banner3.jpg',
-  // ],
   products: [
     {
       name: 'Star Mug',

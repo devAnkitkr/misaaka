@@ -19,6 +19,10 @@ export default function Home(props) {
           name="description"
           content="Indian artisanal products, Crockery | Stoneware | Ceramics | Decor"
         />
+        <meta
+          name="google-site-verification"
+          content="3AcE4Ix7jqkCdW5rhrgILQXv9_YJ5tfgf7I3B01BaU8"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
