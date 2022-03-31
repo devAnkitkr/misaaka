@@ -82,7 +82,7 @@ export default function OrderId() {
     clientSecret,
     appearance,
   };
-
+  console.log('orderitems:====', orderItems);
   return (
     <div className="w-full flex px-4 mt-10">
       <div className="w-full flex flex-col md:flex-row">
@@ -130,7 +130,7 @@ export default function OrderId() {
           <h1 className="border-b pb-2 mb-4 text-heading">
             Delivery Estimates
           </h1>
-          {orderItems && orderItems != null ? (
+          {orderItems != null ? (
             orderItems.map((item, index) => (
               <div
                 className="w-full flex items-center  mb-4 bg-gray-100"

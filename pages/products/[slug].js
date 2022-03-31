@@ -12,7 +12,7 @@ export default function ProductPage(props) {
   const { product, categorySlug } = props;
   const { dispatch } = useContext(ShopContext);
   const snackBarRef = useRef(null);
-
+  console.log('converted Products =====', product);
   const addToCartHandler = () => {
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity: 1 } });
     snackBarRef.current.show();
@@ -74,6 +74,7 @@ export async function getStaticProps({ params }) {
   });
 
   await db.disconnect();
+  console.log('fetched Prodct', fetchProduct);
   return {
     props: {
       product: db.convertDocToObj(fetchProduct),
