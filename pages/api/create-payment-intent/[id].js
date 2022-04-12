@@ -30,7 +30,6 @@ handler.post(async (req, res) => {
     metadata: {},
   });
 
-  console.log('PAYMENT INTENT ID:', paymentIntent.id);
   await db.connect();
   const order = await Order.findById(req.query.id);
   if (order) {

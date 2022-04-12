@@ -82,7 +82,7 @@ export default function OrderId() {
     clientSecret,
     appearance,
   };
-  console.log('orderitems:====', orderItems);
+
   return (
     <div className="w-full flex px-4 mt-10">
       <div className="w-full flex flex-col md:flex-row">
@@ -189,7 +189,6 @@ export default function OrderId() {
             ) : (
               <div className="animate-pulse w-full bg-gray-100 p-4 text-center text-sm text-caption">
                 <span className="flex justify-center">
-                  {' '}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

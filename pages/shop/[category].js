@@ -144,7 +144,7 @@ export async function getStaticProps({ params }) {
     const fetchCategory = fetchCategories.find(
       (item) => item.slug == params.category
     );
-    console.log('fetchCategory', fetchCategory.name);
+
     const fetchProducts = await Product.find({
       category: { $eq: fetchCategory.name },
     }).lean();

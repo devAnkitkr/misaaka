@@ -37,10 +37,10 @@ export default function Paid() {
           status: { ...response.data.status },
           createdAt: response.data.createdAt,
         });
-        console.log('1st useEffect:', response.data);
       }
     }
     fetchData();
+    return () => snackBarRefSuccess.current == null;
   }, [router.query.id]);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Paid() {
         );
 
         if (data.paymentIntent.status == 'succeeded') {
-          const response = await axios.post(`/api/order/${orderId}/post`, {
+          const response = await axios.put(`/api/order/${orderId}/put`, {
             isPaid: data.paymentIntent.status == 'succeeded' ? true : false,
             paidAmount: data.paymentIntent.amount / 100,
           });
@@ -101,14 +101,14 @@ export default function Paid() {
           <h1 className="border-b pb-2 mb-4 text-heading">
             ORDER ID:{' '}
             <span className="text-caption">
-              {orderInfo.orderId != '' && orderInfo.orderId}{' '}
+              {orderInfo.orderId != '' && orderInfo.orderId}
             </span>
           </h1>
 
           {/* =============================Saved Address=============================== */}
           {shippingAddress != null ? (
             <div className="flex flex-col my-5 rounded p-4 w-full bg-gray-100">
-              <h2 className="text-heading text-sm mb-4 ">Saved Address</h2>
+              <h2 className="text-heading text-sm mb-4 ">Shipping Address</h2>
               <div className="flex flex-col text-caption  text-sm">
                 <div className="font-semibold">{shippingAddress.name}</div>
                 <div>{shippingAddress.email}</div>
@@ -124,7 +124,7 @@ export default function Paid() {
             </div>
           ) : (
             <div className="animate-pulse flex flex-col my-5 rounded p-4 w-full bg-gray-100">
-              <h2 className="text-heading text-sm mb-4 ">Saved Address</h2>
+              <h2 className="text-heading text-sm mb-4 ">Shipping Address</h2>
               <div className="flex flex-col text-caption text-sm">
                 Loading...
               </div>
@@ -135,6 +135,9 @@ export default function Paid() {
             <div className="text border rounded w-max px-2 py-1 bg-teal-400 text-white">
               {paymentStatus}
             </div>
+            <small className="my-2 text-caption">
+              You wil receive email for delivery status.
+            </small>
           </div>
         </div>
 

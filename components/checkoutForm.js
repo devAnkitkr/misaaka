@@ -48,14 +48,12 @@ export default function CheckoutForm({ orderId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true);
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
-
-    setIsLoading(true);
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -79,11 +77,11 @@ export default function CheckoutForm({ orderId }) {
       <button
         disabled={isLoading || !stripe || !elements}
         id="submit"
-        className="w-full bg-rose-400 rounded w-full text-white block py-3 flex justify-center hover:bg-rose-500"
+        className="w-full bg-rose-400 rounded w-full text-white block py-3 flex justify-center"
       >
         <span id="button-text w-full">
           {isLoading ? (
-            <button
+            <span
               type="button"
               class="bg-rose-400 rounded w-full text-white block flex justify-center"
               disabled
@@ -104,7 +102,7 @@ export default function CheckoutForm({ orderId }) {
                 <circle cx="17.657" cy="17.658" r="2"></circle>
               </svg>
               Processing...
-            </button>
+            </span>
           ) : (
             'Pay now'
           )}

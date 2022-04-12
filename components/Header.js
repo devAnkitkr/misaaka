@@ -4,12 +4,13 @@ import { ShopContext } from '../utils/shopContext';
 import SearchBar from './SearchBar';
 import MisaakaLogo from './misaakaLogo';
 import { useRouter } from 'next/router';
+import { SvgIcons } from '../utils/svgIcons';
 
 export default function Header() {
   const [isClicked, setisClicked] = useState(false);
   const router = useRouter();
   const {
-    state: { cart },
+    state: { cart, user },
   } = useContext(ShopContext);
 
   return (
@@ -153,6 +154,18 @@ export default function Header() {
             </li>
 
             {/* ========================================ACCOUNT ICON========================================= */}
+            <li className="cursor-pointer flex  justify-center items-center fill-rose-400 pr-2">
+              <span className="pr-1">{SvgIcons.accountIcon}</span>
+              {user != null ? (
+                <Link href="/account">
+                  <span className="text-xs capitalize">{user.name}</span>
+                </Link>
+              ) : (
+                <Link href="/login">
+                  <span className="text-xs capitalize">Login</span>
+                </Link>
+              )}
+            </li>
             <li className="cursor-pointer">
               <Link href="/cart" passHref>
                 <span className="relative">

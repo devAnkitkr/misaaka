@@ -6,11 +6,12 @@ import ShippingForm from '../components/ShippingForm';
 import SnackBar from '../components/SnackBar';
 import moment from 'moment';
 import { ShopContext } from '../utils/shopContext';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Checkout() {
   const router = useRouter();
   const { state } = useContext(ShopContext);
-  const { cart, shippingAddress } = state;
+  const { user, cart, shippingAddress } = state;
   const snackBarRef = useRef(null);
 
   const [priceDetail, setPriceDetail] = useState({
@@ -19,11 +20,8 @@ export default function Checkout() {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  var today = new Date();
-  var dd = String(today.getDate() + 5).padStart(2, '0');
-
   useEffect(() => {
-    if (cart.length == 0) {
+    if (cart.length == 0 || user == null) {
       router.push('/');
       return;
     }
@@ -34,32 +32,44 @@ export default function Checkout() {
     });
   }, [cart, router]);
 
+  // CONFIRMING ORDER.................
   const confirmOrder = async () => {
     if (shippingAddress == null) {
       snackBarRef.current.show();
       return;
     }
+
     setIsLoading(true);
     const orderItems = cart.map((product) => ({
       product_id: product._id,
+      name: product.name,
+      price: product.price,
       quantity: product.quantity,
     }));
-    const response = await axios.post('/api/order', {
-      orderItems,
-      shippingAddress,
-      status: {
-        isPaid: false,
-        paidAmount: 0,
-        isDelivered: false,
-        deliveryStatus: 'Processing',
+    const { data } = await axios.post(
+      '/api/order',
+      {
+        orderItems,
+        shippingAddress,
+        status: {
+          isPaid: false,
+          paidAmount: 0,
+          isDelivered: false,
+          deliveryStatus: 'Processing',
+        },
       },
-    });
+      {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     setIsLoading(false);
-    router.push(`/order/${response.data._id}`);
+    router.push(`/order/${data._id}`);
   };
 
   return (
-    <div className="w-full flex px-4 mt-10">
+    <div className="w-full flex px-4 mt-10 relative">
       <SnackBar
         ref={snackBarRef}
         message="Shipping address is not provided"
@@ -71,26 +81,30 @@ export default function Checkout() {
           <h1 className="border-b pb-2 mb-4 text-heading">Shipping Address</h1>
 
           {/* =============================Saved Address=============================== */}
-          {state.shippingAddress != null && (
-            <div className="flex my-5 border rounded p-2 w-max">
-              <h2 className="text-caption text-sm">Saved Address:</h2>
-              <div className="text-caption ml-2 text-sm">
-                <div className="font-semibold">
-                  {state.shippingAddress.name}
-                </div>
-                <div>{state.shippingAddress.email}</div>
-                <div>{state.shippingAddress.mobile}</div>
-                <div>
-                  {state.shippingAddress.address},
-                  {state.shippingAddress.pinCode}
-                </div>
-                <div>
-                  {state.shippingAddress.city},{state.shippingAddress.state},{' '}
-                  {state.shippingAddress.country}
+          <div>
+            {state.shippingAddress != null ? (
+              <div className="flex my-5 border rounded p-2 w-max">
+                <h2 className="text-caption text-sm">Saved Address:</h2>
+                <div className="text-caption ml-2 text-sm">
+                  <div className="font-semibold">
+                    {state.shippingAddress.name}
+                  </div>
+                  <div>{state.shippingAddress.email}</div>
+                  <div>{state.shippingAddress.mobile}</div>
+                  <div>
+                    {state.shippingAddress.address},
+                    {state.shippingAddress.pinCode}
+                  </div>
+                  <div>
+                    {state.shippingAddress.city},{state.shippingAddress.state},{' '}
+                    {state.shippingAddress.country}
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            ) : (
+              <></>
+            )}
+          </div>
 
           <ShippingForm />
         </div>
@@ -100,31 +114,33 @@ export default function Checkout() {
           <h1 className="border-b pb-2 mb-4 text-heading">
             Delivery Estimates
           </h1>
-          {cart &&
-            cart.length > 0 &&
-            cart.map((product) => (
-              <div
-                className="w-full flex items-center pb-2 mb-4 border-b"
-                key={product.slug}
-              >
-                <div className="w-[80px]">
-                  <Image
-                    src={product.images[0]}
-                    alt={product.name}
-                    width="40"
-                    height="50"
-                    layout="responsive"
-                    objectFit="cover"
-                  />
+          <div>
+            {cart &&
+              cart.length > 0 &&
+              cart.map((product) => (
+                <div
+                  className="w-full flex items-center pb-2 mb-4 border-b"
+                  key={product.slug}
+                >
+                  <div className="w-[80px]">
+                    <Image
+                      src={product.images[0]}
+                      alt={product.name}
+                      width="40"
+                      height="50"
+                      layout="responsive"
+                      objectFit="cover"
+                    />
+                  </div>
+                  <div className="flex flex-col ml-4 text-caption">
+                    Estimate delivery by{' '}
+                    <span className="text-heading">
+                      {moment().add(5, 'days').format('ll')}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex flex-col ml-4 text-caption">
-                  Estimate delivery by{' '}
-                  <span className="text-heading">
-                    {moment().add(5, 'days').format('ll')}
-                  </span>
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
 
           {/* =============================Price details=============================== */}
           <div className="mb-4 text-heading">

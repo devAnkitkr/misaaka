@@ -4,7 +4,7 @@ import db from '../../../../utils/db';
 
 const handler = nc();
 
-handler.post(async (req, res) => {
+handler.put(async (req, res) => {
   await db.connect();
   const order = await Order.findById(req.query.id);
   if (order) {

@@ -1,12 +1,13 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { products } from '../cache/data';
 
 const SearchBar = () => {
   const [results, setResults] = useState([]);
 
-  const onChange = useCallback((event) => {
+  const handleOnChange = (event) => {
     const query = event.target.value;
+    console.log('i was called');
     if (query.length) {
       setResults(
         products.filter(
@@ -18,15 +19,23 @@ const SearchBar = () => {
     } else {
       setResults([]);
     }
-  }, []);
+  };
+
+  const debounce = (func, delay = 500) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func(...args), delay);
+    };
+  };
   return (
     <div className="w-64 relative">
       <div>
         <input
-          type="text"
+          type="search"
           placeholder="Search..."
           className="px-1 py-1 rounded-sm focus:outline-0 w-full"
-          onChange={onChange}
+          onChange={debounce((e) => handleOnChange(e))}
         />
       </div>
       <div>

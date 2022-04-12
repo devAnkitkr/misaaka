@@ -1,16 +1,16 @@
 const axios = require('axios');
 const fs = require('fs');
-const Categories = require('../models/category');
+// const Categories = require('../models/category');
 const Products = require('../models/products');
 const db = require('../utils/db');
-const data = require('../utils/data');
+// const data = require('../utils/data');
 (async () => {
   try {
     await db.connect();
-    await Categories.deleteMany();
-    await Categories.insertMany(data.categories);
-    await Products.deleteMany();
-    await Products.insertMany(data.products);
+    // await Categories.deleteMany();
+    // await Categories.insertMany(data.categories);
+    // await Products.deleteMany();
+    // await Products.insertMany(data.products);
     const products = await Products.find({});
     await db.disconnect();
 

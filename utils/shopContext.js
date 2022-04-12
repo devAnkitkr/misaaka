@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 export const ShopContext = createContext();
 
 const initialState = {
+  user: Cookies.get('userInfo') ? JSON.parse(Cookies.get('userInfo')) : null,
   cart: Cookies.get('cart') ? JSON.parse(Cookies.get('cart')) : [],
   shippingAddress: Cookies.get('shippingAddress')
     ? JSON.parse(Cookies.get('shippingAddress'))
@@ -49,6 +50,27 @@ function reducer(state, action) {
       return {
         ...state,
         shippingAddress: action.payload,
+      };
+    }
+    case 'SIGN IN': {
+      Cookies.set('userInfo', JSON.stringify(action.payload));
+      return {
+        ...state,
+        user: action.payload,
+      };
+    }
+    case 'LOG OUT': {
+      Cookies.remove('userInfo');
+      return {
+        ...state,
+        user: null,
+      };
+    }
+    case 'UPDATE USER': {
+      Cookies.set('userInfo', JSON.stringify(action.payload));
+      return {
+        ...state,
+        user: action.payload,
       };
     }
     default:

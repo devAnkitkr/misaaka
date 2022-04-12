@@ -8,7 +8,10 @@ const handler = nc();
 
 handler.get(async (req, res) => {
   await db.connect();
+  // console.log('req', order);
+
   const order = await Order.findById(req.query.id);
+
   const productList = await Promise.all(
     order.orderItems.map(async (item) => ({
       product: await Product.findById({
@@ -18,6 +21,7 @@ handler.get(async (req, res) => {
     }))
   );
   await db.disconnect();
+
   res.status(201).send({
     orderItems: [...productList],
     shippingAddress: order.shippingAddress,

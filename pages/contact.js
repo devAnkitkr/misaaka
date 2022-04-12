@@ -51,7 +51,6 @@ export default function Contact() {
         )
         .then(
           function (response) {
-            console.log('SUCCESS!', response.status, response.text);
             setState({
               name: '',
               email: '',
@@ -61,7 +60,6 @@ export default function Contact() {
             setLoading(false);
           },
           function (error) {
-            console.log('FAILED...', error);
             setLoading(false);
             setError('Message not sent');
           }
